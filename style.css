@@ -21,17 +21,28 @@ grey {
 }
 
 table {
-    font-size: 24px;
+    font-size: 20px;
 }
 
 .handshake {
     background-color: rgb(228, 204, 246)
 }
 
-.chello {
+.chello, .kex {
     background-color: rgb(192, 215, 242)
 }
 
-.shello {
+.shello, .data {
     background-color: rgb(248, 210, 210)
+}
+
+.fin {
+    background-color: rgb(210, 210, 210)
+}
+
+.legend {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
 }

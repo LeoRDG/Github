@@ -14,7 +14,7 @@
             <section>
                 <img src="github-logo.png" style="max-height: 400px; width: auto; text-align: center;" alt="">
                 <br>
-            
+
                 <ul style="text-align: center;">
                     <li>Leonardo Rodrigues</li>
                     <li>Joao Elias</li>
@@ -198,11 +198,135 @@ OrgName:        GitHub, Inc.
                 </div>
             </section>
 
+            <!-- ssh -->
+            <section>
+                <h3>Comunicacao SSH</h3>
+                <pre>❯ git push origin main</pre>
+                <table class="fragment fade-in" data-fragment-index="1" style="grid-area: content;">
+                    <tr>
+                        <th>Fonte</th>
+                        <th>Destino</th>
+                        <th>Protocolo</th>
+                        <th>Info</th>
+                    </tr>
+
+                    <!-- handshake TCP -->
+                    <tr class="handshake fragment fade-in" data-fragment-index="1">
+                        <td>192.168.1.13</td>
+                        <td>4.228.31.150</td>
+                        <td>TCP</td>
+                        <td><strong>
+                                <g>[SYN]</g>
+                            </strong> Seq=0 Win=64240 ...</td>
+                    </tr>
+                    <tr class="handshake fragment fade-in" data-fragment-index="1">
+                        <td>4.228.31.150</td>
+                        <td>192.168.1.13</td>
+                        <td>TCP</td>
+                        <td><strong>
+                                <g>[SYN, ACK]</g>
+                            </strong> Seq=0 Ack=1 ...</td>
+                    </tr>
+                    <tr class="handshake fragment fade-in" data-fragment-index="1">
+                        <td>192.168.1.13</td>
+                        <td>4.228.31.150</td>
+                        <td>TCP</td>
+                        <td><strong>
+                                <g>[ACK]</g>
+                            </strong> Seq=1 Ack=1 ...</td>
+                    </tr>
+
+                    <!-- negociação de chaves -->
+                    <tr class="kex fragment fade-in" data-fragment-index="2">
+                        <td>192.168.1.13</td>
+                        <td>4.228.31.150</td>
+                        <td>SSHv2</td>
+                        <td>Client: Key Exchange Init</td>
+                    </tr>
+                    <tr class="kex fragment fade-in" data-fragment-index="2">
+                        <td>192.168.1.13</td>
+                        <td>4.228.31.150</td>
+                        <td>SSHv2</td>
+                        <td>PQ/T Hybrid Key Exchange Init</td>
+                    </tr>
+                    <tr class="kex fragment fade-in" data-fragment-index="2">
+                        <td>4.228.31.150</td>
+                        <td>192.168.1.13</td>
+                        <td>SSHv2</td>
+                        <td>PQ/T Hybrid Key Exchange Reply, New Keys</td>
+                    </tr>
+                    <tr class="kex fragment fade-in" data-fragment-index="2">
+                        <td>192.168.1.13</td>
+                        <td>4.228.31.150</td>
+                        <td>SSHv2</td>
+                        <td>New Keys</td>
+                    </tr>
+
+                    <!-- transferencia -->
+                    <tr class="data fragment fade-in" data-fragment-index="3">
+                        <td>192.168.1.13</td>
+                        <td>4.228.31.150</td>
+                        <td>SSHv2</td>
+                        <td>Client: Encrypted packet (len=2848)</td>
+                    </tr>
+                    <tr class="data fragment fade-in" data-fragment-index="3">
+                        <td>192.168.1.13</td>
+                        <td>4.228.31.150</td>
+                        <td>SSHv2</td>
+                        <td>Client: Encrypted packet (len=14240)</td>
+                    </tr>
+                    <tr class="data fragment fade-in" data-fragment-index="3">
+                        <td>192.168.1.13</td>
+                        <td>4.228.31.150</td>
+                        <td>SSHv2</td>
+                        <td>Client: Encrypted packet (len=37024)</td>
+                    </tr>
+
+                    <!-- encerramento -->
+                    <tr class="fin fragment fade-in" data-fragment-index="4">
+                        <td>192.168.1.13</td>
+                        <td>4.228.31.150</td>
+                        <td>TCP</td>
+                        <td><strong>
+                                <g>[FIN, ACK]</g>
+                            </strong> Seq=918543 Ack=4618 ...</td>
+                    </tr>
+                    <tr class="fin fragment fade-in" data-fragment-index="4">
+                        <td>4.228.31.150</td>
+                        <td>192.168.1.13</td>
+                        <td>TCP</td>
+                        <td><strong>
+                                <g>[FIN, ACK]</g>
+                            </strong> Seq=4618 Ack=918544 ...</td>
+                    </tr>
+                    <tr class="fin fragment fade-in" data-fragment-index="4">
+                        <td>192.168.1.13</td>
+                        <td>4.228.31.150</td>
+                        <td>TCP</td>
+                        <td><strong>
+                                <g>[ACK]</g>
+                            </strong> Seq=918544 Ack=4619 ...</td>
+                    </tr>
+
+                </table>
+
+                <ul
+                    style="margin-top: 20px; display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; font-size: 18px;">
+                    <li class="fragment fade-in" data-fragment-index="1"><span class="handshake legend"></span>
+                        Handshake TCP</li>
+                    <li class="fragment fade-in" data-fragment-index="2"><span class="kex legend"></span> Troca de
+                        chaves</li>
+                    <li class="fragment fade-in" data-fragment-index="3"><span class="data legend"></span> Transferencia
+                        de dados</li>
+                    <li class="fragment fade-in" data-fragment-index="4"><span class="fin legend"></span> Encerramento
+                    </li>
+                </ul>
+            </section>
         </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.js"></script>
     <script>
-        Reveal.initialize({hash:true});
+        Reveal.initialize({ hash: true });
     </script>
 </body>
