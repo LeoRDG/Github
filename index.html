@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Apresentacao GitHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/theme/solarized.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!-- CAPA -->
+            <section>
+                <img src="github-logo.png" style="max-height: 400px; width: auto; text-align: center;" alt="">
+                <br>
+            
+                <ul style="text-align: center;">
+                    <li>Leonardo Rodrigues</li>
+                    <li>Joao Elias</li>
+                </ul>
+            </section>
+
+            <!-- Intro 1  -->
+            <section>
+                <h3>O que 'e o Github?</h3>
+                <p>'E Basicamente uma aplicacao para guardar codigo na nuvem</p>
+                <img src="cloud.png" style="height: 300px;">
+            </section>
+
+            <!-- Intro 2 -->
+            <section>
+                <h3>Mas 'e muito mais do que isso</h3>
+                <p>Alem de guardar seu codigo, o github suporta</p>
+                <br><br>
+                <ul>
+                    <li>Controle de versao</li>
+                    <li>Colaboracao</li>
+                    <li>Automacao CI/CD</li>
+                    <li>Hospedagem</li>
+                    <li>Seguranca</li>
+                    <li>Integracoes</li>
+                </ul>
+            </section>
+
+            <!-- Rede Social -->
+            <section>
+                <h3>Github tamb'em ;e uma rede social</h3>
+                <p>onde voce pode compartilhar seu codigo com estranhos na internet</p>
+            </section>
+
+            <!-- dns -->
+            <section>
+                <h3>DNS</h3>
+                <pre>❯ <strong>nslookup</strong> github.com
+Server:		192.168.1.101
+Address:	<y><strong>192.168.1.101#53</strong> -> meu servidor local de dns</y>
+
+Non-authoritative answer:
+Name:	github.com
+Address: <g><strong>4.228.31.150</strong>     -> ip retornado pelo servidor dns</g>
+                </pre>
+
+                <pre>❯ <strong>dig</strong> +trace github.com
+<grey>[...]</grey>
+<grey>.	        	a.root-servers.net.</grey>
+<strong><g>.			f.root-servers.net.</g></strong>
+;; Received 525 bytes from (192.168.1.101) in 24 ms
+<grey>[...]</grey>
+<grey>com.			c.gtld-servers.net.</grey>
+<strong><g>com.			d.gtld-servers.net.</g></strong>
+;; Received 1170 bytes from (f.root-servers.net) in 26 ms
+<grey>[...]</grey>
+<grey>github.com.		ns-1707.awsdns-21.co.uk.</grey>
+<grey>github.com.		ns-1283.awsdns-32.org.</grey>
+<strong><g>github.com.		dns2.p08.nsone.net.</g></strong>
+;; Received 663 bytes from (d.gtld-servers.net) in 138 ms
+
+<g>github.com.     	<strong>4.228.31.150</strong>
+;; Received 55 bytes from (dns2.p08.nsone.net) in 26 ms</g>
+</pre>
+
+            </section>
+
+            <!-- comparacao distribuicao -->
+            <section>
+                <h3>Arquitetura distribuida</h3>
+                <pre>
+❯ <strong>nslookup</strong> github.com
+Server:		192.168.1.101
+Address:	<y><strong>192.168.1.101#53</strong> -> meu servidor local de dns</y>
+
+Non-authoritative answer:
+Name:	github.com
+Address: <g><strong>4.228.31.150</strong>     -> ip retornado pelo servidor dns</g>
+                </pre>
+                <pre>
+❯ <strong>nslookup</strong> github.com 84.200.69.80
+Server:		84.200.69.80
+Address:	<y><strong>84.200.69.80#53</strong>  -> um servidor alemao de dns</y>
+
+Non-authoritative answer:
+Name:	github.com
+Address: <g><strong>140.82.121.3</strong>      -> ip retornado pelo servidor dns</g>
+                </pre>
+
+            </section>
+
+            <section>
+                <pre>
+❯ <strong>whois</strong> 4.228.31.150 | <strong>grep</strong> -E "NetRange|CIDR|OrgName"
+NetRange:       4.224.0.0 - 4.239.255.255
+CIDR:           4.224.0.0/12
+OrgName:        Microsoft Corporation
+                </pre>
+                <br>
+                <pre>
+❯ <strong>whois</strong> 140.82.121.3 | <strong>grep</strong> -E "NetRange|CIDR|OrgName"
+NetRange:       140.82.112.0 - 140.82.127.255
+CIDR:           140.82.112.0/20
+OrgName:        GitHub, Inc.
+                </pre>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.js"></script>
+    <script>
+        Reveal.initialize({hash:true});
+    </script>
+</body>
