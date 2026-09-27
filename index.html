@@ -179,13 +179,13 @@ OrgName:        GitHub, Inc.
                                 </strong> Seq=1 Ack=1571 ...</td>
                         </tr>
                         <!-- server hello -->
-                        <tr class="shello fragment fade-in" data-fragment-index="5">
+                        <tr class="chello fragment fade-in" data-fragment-index="4">
                             <td>4.228.31.150</td>
                             <td>192.168.1.13</td>
                             <td>TLSv1.3</td>
                             <td>Server Hello, Change Cipher Spec ...</td>
                         </tr>
-                        <tr class="shello fragment fade-in" data-fragment-index="5">
+                        <tr class="chello fragment fade-in" data-fragment-index="4">
                             <td>192.168.1.13</td>
                             <td>4.228.31.150</td>
                             <td>TCP</td>
@@ -194,7 +194,66 @@ OrgName:        GitHub, Inc.
                                 </strong> Seq=1571 ...
                             </td>
                         </tr>
+                        <tr class="fragment fade-in" data-fragment-index="5">
+                            <td>[...]</td>
+                            <td>[...]</td>
+                            <td>[...]</td>
+                            <td>[...]</td>
+                        </tr>
+                        <!-- encerramento -->
+                        <tr class="fin fragment fade-in" data-fragment-index="5">
+                            <td>192.168.1.13</td>
+                            <td>4.228.31.150</td>
+                            <td>TCP</td>
+                            <td><strong>
+                                    <g>[RST]</g>
+                                </strong> Seq=2714 Win=0 ...</td>
+                        </tr>
+                        <tr class="fin fragment fade-in" data-fragment-index="5">
+                            <td>4.228.31.150</td>
+                            <td>192.168.1.13</td>
+                            <td>TCP</td>
+                            <td><strong>
+                                    <g>[FIN, ACK]</g>
+                                </strong> Seq=96227 Ack=2714 ...</td>
+                        </tr>
+                        <tr class="fin fragment fade-in" data-fragment-index="5">
+                            <td>192.168.1.13</td>
+                            <td>4.228.31.150</td>
+                            <td>TCP</td>
+                            <td><strong>
+                                    <g>[RST]</g>
+                                </strong> Seq=2714 Win=0 ...</td>
+                        </tr>
+                        <tr class="fin fragment fade-in" data-fragment-index="5">
+                            <td>4.228.31.150</td>
+                            <td>192.168.1.13</td>
+                            <td>TCP</td>
+                            <td><strong>
+                                    <g>[ACK]</g>
+                                </strong> Seq=96228 Ack=2715 ...</td>
+                        </tr>
+                        <tr class="fin fragment fade-in" data-fragment-index="5">
+                            <td>192.168.1.13</td>
+                            <td>4.228.31.150</td>
+                            <td>TCP</td>
+                            <td><strong>
+                                    <g>[RST]</g>
+                                </strong> Seq=2715 Win=0 ...</td>
+                        </tr>
                     </table>
+
+                    <ul
+                        style="margin-top: 20px; display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; font-size: 18px; grid-area: content;">
+                        <li class="fragment fade-in" data-fragment-index="1"><span class="handshake legend"></span>
+                            Handshake TCP</li>
+                        <li class="fragment fade-in" data-fragment-index="4"><span class="kex legend"></span> Handshake
+                            TLS</li>
+                        <li class="fragment fade-in" data-fragment-index="5"><span class="fin legend"></span>
+                            Encerramento</li>
+                        </li>
+                    </ul>
+
                 </div>
             </section>
 
