@@ -121,6 +121,83 @@ CIDR:           140.82.112.0/20
 OrgName:        GitHub, Inc.
                 </pre>
             </section>
+
+            <!-- https -->
+            <section>
+                <h3>Comunicacao HTTPS</h3>
+                <pre>❯ git clone https://github.com/LeoRDG/Github.git</pre>
+                <div style="display: grid; grid-template-areas: 'content'; justify-items: center;">
+
+                    <img src="clone_wire.png" class="fragment fade-out" data-fragment-index="1"
+                        style="grid-area: content; max-height: 600px;">
+
+                    <table class="fragment fade-in" data-fragment-index="1" style="grid-area: content;">
+                        <tr>
+                            <th>Fonte</th>
+                            <th>Destino</th>
+                            <th>Protocolo</th>
+                            <th>Info</th>
+                        </tr>
+                        <!-- handshake -->
+                        <tr class="handshake fragment fade-in" data-fragment-index="1">
+                            <td>192.168.1.13</td>
+                            <td>4.228.31.150</td>
+                            <td>TCP</td>
+                            <td><strong>
+                                    <g>[SYN]</g>
+                                </strong> Seq=0 Win=64240 ...</td>
+                        </tr>
+                        <tr class="handshake fragment fade-in" data-fragment-index="2">
+                            <td>4.228.31.150</td>
+                            <td>192.168.1.13</td>
+                            <td>TCP</td>
+                            <td><strong>
+                                    <g>[SYN, ACK]</g>
+                                </strong> Seq=0 Ack=1 ...</td>
+                        </tr>
+                        <tr class="handshake fragment fade-in" data-fragment-index="3">
+                            <td>192.168.1.13</td>
+                            <td>4.228.31.150</td>
+                            <td>TCP</td>
+                            <td><strong>
+                                    <g>[ACK]</g>
+                                </strong> Seq=1 Ack=1 ...</td>
+                        </tr>
+                        <!-- Cliente hello -->
+                        <tr class="chello fragment fade-in" data-fragment-index="4">
+                            <td>192.168.1.13</td>
+                            <td>4.228.31.150</td>
+                            <td>TLSv1.3</td>
+                            <td>Client Hello (SNI=github.com)</td>
+                        </tr>
+                        <tr class="chello fragment fade-in" data-fragment-index="4">
+                            <td>4.228.31.150</td>
+                            <td>192.168.1.13</td>
+                            <td>TCP</td>
+                            <td><strong>
+                                    <g>[ACK]</g>
+                                </strong> Seq=1 Ack=1571 ...</td>
+                        </tr>
+                        <!-- server hello -->
+                        <tr class="shello fragment fade-in" data-fragment-index="5">
+                            <td>4.228.31.150</td>
+                            <td>192.168.1.13</td>
+                            <td>TLSv1.3</td>
+                            <td>Server Hello, Change Cipher Spec ...</td>
+                        </tr>
+                        <tr class="shello fragment fade-in" data-fragment-index="5">
+                            <td>192.168.1.13</td>
+                            <td>4.228.31.150</td>
+                            <td>TCP</td>
+                            <td><strong>
+                                    <g>[ACK]</g>
+                                </strong> Seq=1571 ...
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+
         </div>
     </div>
 
