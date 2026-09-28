@@ -122,6 +122,20 @@ OrgName:        GitHub, Inc.
                 </pre>
             </section>
 
+            <!-- dominios -->
+            <section class="summary-list" id="dominios" data-scrollable>
+                <h3>Domínios do GitHub</h3>
+                <pre id="dominios-list" data-prevent-swipe></pre>
+                <a href="https://api.github.com/meta" target="_blank" style="font-size:0.4em">api.github.com/meta</a>
+            </section>
+            
+            <!-- ips -->
+            <section class="summary-list" id="ips">
+                <h3>Blocos de IP por serviço</h3>
+                <pre id="ip-list" data-prevent-swipe></pre>
+                <a href="https://api.github.com/meta" target="_blank" style="font-size:0.4em">api.github.com/meta</a>
+            </section>
+
             <!-- https -->
             <section>
                 <h3>Comunicacao HTTPS</h3>
@@ -385,6 +399,67 @@ OrgName:        GitHub, Inc.
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.js"></script>
+    <script>
+        function flatten(arr) {
+            if (Array.isArray(arr)) return arr;
+            if (arr && typeof arr === 'object') return Object.values(arr).flatMap(flatten);
+            return [];
+        }
+
+        function criar_dominios(resposta_json) {
+            const list = document.getElementById('dominios-list');
+            list.innerHTML = '';
+
+            for (const [categoria, valor] of Object.entries(resposta_json.domains)) {
+                const dominios = [...new Set(flatten(valor))].sort();
+
+                const det = document.createElement('details');
+                const sum = document.createElement('summary');
+
+                sum.textContent = `${categoria} (${dominios.length})`;
+                det.appendChild(sum);
+
+                const ul = document.createElement('ul');
+                dominios.forEach(d => {
+                    const li = document.createElement('li');
+                    li.textContent = d;
+                    ul.appendChild(li);
+                });
+                det.appendChild(ul);
+                list.appendChild(det);
+            }
+        }
+
+        function criar_ips(resposta_json) {
+            const list = document.getElementById('ip-list');
+            list.innerHTML = '';
+
+            for (const [categoria, valor] of Object.entries(resposta_json)) {
+                if (['verifiable_password_authentication', 'ssh_key_fingerprints', 'ssh_keys', 'domains', 'commit-signing-keys'].includes(categoria)) continue;
+                const ips = [...new Set(flatten(valor))].sort();
+
+                const det = document.createElement('details');
+                const sum = document.createElement('summary');
+
+                sum.textContent = `${categoria} (${ips.length})`;
+                det.appendChild(sum);
+
+                const ul = document.createElement('ul');
+                ips.forEach(d => {
+                    const li = document.createElement('li');
+                    li.textContent = d;
+                    ul.appendChild(li);
+                });
+                det.appendChild(ul);
+                list.appendChild(det);
+            }
+        }
+
+        const r = fetch('https://api.github.com/meta').then(resp => resp.json());
+        r.then(data => criar_dominios(data));        
+        r.then(data => criar_ips(data));        
+        
+    </script>
     <script>
         Reveal.initialize({ hash: true });
     </script>

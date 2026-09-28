@@ -46,3 +46,22 @@ table {
   height: 16px;
   border-radius: 3px;
 }
+
+.summary-list {
+  height: 500px;
+  max-height: 90%;
+  overflow-y: auto;
+}
+
+.summary-list * {
+    text-align: left;
+}
+
+summary {
+    font-weight: bold;
+    cursor:grab;
+}
+
+summary:hover {
+    color: rgb(129, 189, 242);
+}
