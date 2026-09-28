@@ -3,7 +3,7 @@
 <head>
     <title>Apresentacao GitHub</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/theme/solarized.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/theme/beige.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -30,17 +30,38 @@
 
             <!-- Intro 2 -->
             <section>
-                <h3>Mas 'e muito mais do que isso</h3>
-                <p>Alem de guardar seu codigo, o github suporta</p>
-                <br><br>
-                <ul>
-                    <li>Controle de versao</li>
-                    <li>Colaboracao</li>
-                    <li>Automacao CI/CD</li>
-                    <li>Hospedagem</li>
-                    <li>Seguranca</li>
-                    <li>Integracoes</li>
+            <h3>Mas é muito mais do que isso</h3>
+            <p>O GitHub apoia todo o ciclo de desenvolvimento</p>
+            <ul style="font-size: 0.8em;">
+                <li>Planejamento: Issues e Projects</li>
+                <li>Criação: repositórios e histórico</li>
+                <li>Revisão: pull requests</li>
+                <li>Teste: automação com Actions</li>
+                <li>Deploy: releases, Pages e Packages</li>
+                <li>Operação: dependências e segurança</li>
+            </ul>
+            </section>
+
+            <!-- Intro 3 -->
+            <section>
+            <h3>Git ≠ GitHub</h3>
+            <div class="two-col" style="display:flex; gap:30px; text-align:left;">
+                <div>
+                <h4>Git</h4>
+                <ul style="font-size:0.7em;">
+                    <li>Sistema de controle de versão</li>
+                    <li>Código aberto</li>
+                    <li>Roda na sua máquina</li>
                 </ul>
+                </div>
+                <div>
+                <h4>GitHub</h4>
+                <ul style="font-size:0.7em;">
+                    <li>Plataforma construída sobre o Git</li>
+                    <li>Hospeda repositórios e adiciona colaboração, automação e mais</li>
+                </ul>
+                </div>
+            </div>
             </section>
 
             <!-- Rede Social -->
@@ -52,7 +73,7 @@
             <!-- dns -->
             <section>
                 <h3>DNS</h3>
-                <pre>❯ <strong>nslookup</strong> github.com
+                <pre style="position: absolute; width: 100%;" class="fragment fade-out" data-fragment-index="1">❯ <strong>nslookup</strong> github.com
 Server:		192.168.1.101
 Address:	<y><strong>192.168.1.101#53</strong> -> meu servidor local de dns</y>
 
@@ -61,7 +82,7 @@ Name:	github.com
 Address: <g><strong>4.228.31.150</strong>     -> ip retornado pelo servidor dns</g>
                 </pre>
 
-                <pre>❯ <strong>dig</strong> +trace github.com
+                <pre style="position: absolute; width: 100%;" class="fragment fade-in" data-fragment-index="1">❯ <strong>dig</strong> +trace github.com
 <grey>[...]</grey>
 <grey>.	        	a.root-servers.net.</grey>
 <strong><g>.			f.root-servers.net.</g></strong>
