@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <head>
+    <meta charset="utf-8">
     <title>Apresentacao GitHub</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/theme/beige.min.css">
@@ -12,9 +13,9 @@
         <div class="slides">
             <!-- CAPA -->
             <section>
-                <img src="github-logo.png" style="max-height: 400px; width: auto; text-align: center;" alt="">
-                <br>
-
+                <img src="github-logo.png" style="height: 3em; width: auto; text-align: center;" alt="">
+                <h1 style="margin: 0px 0; padding-top: .6em;">Uma análise de Redes</h1>
+                <br><br><br>
                 <ul style="text-align: center;">
                     <li>Leonardo Rodrigues</li>
                     <li>João Elias</li>
@@ -33,12 +34,12 @@
                 <h3>Mas é muito mais do que isso</h3>
                 <p>O GitHub apoia todo o ciclo de desenvolvimento</p>
                 <ul style="font-size: 0.8em;">
-                    <li>Planejamento: Issues e Projects</li>
-                    <li>Criação: repositórios e histórico</li>
-                    <li>Revisão: pull requests</li>
-                    <li>Teste: automação com Actions</li>
-                    <li>Deploy: releases, Pages e Packages</li>
-                    <li>Operação: dependências e segurança</li>
+                    <li><strong>Planejamento:</strong> Issues e Projects</li>
+                    <li><strong>Criação:</strong> repositórios e histórico</li>
+                    <li><strong>Revisão:</strong> pull requests</li>
+                    <li><strong>Teste:</strong> automação com Actions</li>
+                    <li><strong>Deploy:</strong> releases, Pages e Packages</li>
+                    <li><strong>Operação:</strong> dependências e segurança (Dependabot)</li>
                 </ul>
             </section>
 
@@ -251,7 +252,7 @@ Address: <g><strong>4.228.31.150</strong>     -> ip retornado pelo servidor dns<
                     <svg class="fragment" data-fragment-index="4" overflow="visible">
                         <line x1="645" y1="125" x2="645" y2="201" stroke="#c62828" fill="#c62828" stroke-width="2" marker-end="url(#seta-nao)" />
                         <text x="655" y="168" font-size="14" font-weight="bold" fill="#c62828">Nao</text>
-                        <rect x="550" y="205" width="190" height="60" rx="6" fill="#f3eef9" stroke="#6b4c9a" stroke-width="2" />
+                        <rect x="550" y="205" width="190" height="60" rx="6" fill="#f3eef9" stroke="#666" stroke-width="2" />
                         <text x="645" y="230" text-anchor="middle" font-size="15" font-weight="bold" fill="#333">Servidor raiz</text>
                         <text x="645" y="250" text-anchor="middle" font-size="14" fill="#333">f.root-servers.net</text>
                     </svg>
@@ -259,7 +260,7 @@ Address: <g><strong>4.228.31.150</strong>     -> ip retornado pelo servidor dns<
                     <!-- tld -->
                     <svg class="fragment" data-fragment-index="4" overflow="visible">
                         <line x1="550" y1="245" x2="474" y2="245" stroke="#333" stroke-width="2" marker-end="url(#seta-fluxo)" />
-                        <rect x="280" y="211" width="190" height="60" rx="6" fill="#f3eef9" stroke="#6b4c9a" stroke-width="2" />
+                        <rect x="280" y="211" width="190" height="60" rx="6" fill="#f3eef9" stroke="#666" stroke-width="2" />
                         <text x="375" y="235" text-anchor="middle" font-size="15" font-weight="bold" fill="#333">Servidor TLD .com</text>
                         <text x="375" y="250" text-anchor="middle" font-size="14" fill="#333">d.gtld-servers.net</text>
                     </svg>
@@ -294,6 +295,7 @@ Address: <g><strong>4.228.31.150</strong>     -> ip retornado pelo servidor dns<
             <!-- comparacao distribuicao -->
             <section>
                 <h3>Um domínio, varios servidores</h3>
+                <p style="font-size: 0.5em; opacity: 0.8;">O mesmo domínio aponta para servidores em regiões diferentes</p>
                 <div style="position: absolute; width:100%" class="fragment fade-out" data-fragment-index="1">
                     <pre>
 ❯ <strong>nslookup</strong> github.com
@@ -340,31 +342,29 @@ x-github-edge-region: <g><strong>canadacentral</strong></g>
                         </pre>
                     </div>
                 </div>
-
-
             </section>
 
-            <!--
             <section>
+                <h3>Quem sao os donos dos IPs?</h3>
                 <pre>
 ❯ <strong>whois</strong> 4.228.31.150 | <strong>grep</strong> -E "NetRange|CIDR|OrgName"
 NetRange:       4.224.0.0 - 4.239.255.255
 CIDR:           4.224.0.0/12
-OrgName:        Microsoft Corporation
+OrgName:        <strong><g>Microsoft Corporation</g></strong>
                 </pre>
                 <br>
                 <pre>
 ❯ <strong>whois</strong> 140.82.121.3 | <strong>grep</strong> -E "NetRange|CIDR|OrgName"
 NetRange:       140.82.112.0 - 140.82.127.255
 CIDR:           140.82.112.0/20
-OrgName:        GitHub, Inc.
+OrgName:        <strong><g>GitHub, Inc.</g></strong>
                 </pre>
             </section>
-            -->
 
             <!-- CDN no GitHub Pages -->
             <section>
                 <h3>CDN em Github Pages</h3>
+                <p style="font-size: 0.5em; opacity: 0.8;">O conteúdo é entregue por um servidor de cache próximo ao cliente</p>
                 <pre style="font-size: 0.45em;">❯ <strong>curl</strong> -I https://leordg.github.io/Github/
 <grey>[...]</grey>
 <strong>x-served-by:</strong> cache-cwb-sbct2070034-CWB     <y>-> nó da CDN em Curitiba</y>
@@ -376,13 +376,15 @@ OrgName:        GitHub, Inc.
             <!-- dominios -->
             <section class="summary-list" id="dominios" data-scrollable>
                 <h3>Domínios do GitHub</h3>
+                <p style="font-size: 0.5em; opacity: 0.8;">Todos os dominios listados na API</p>
                 <pre id="dominios-list" data-prevent-swipe></pre>
                 <a href="https://api.github.com/meta" target="_blank" style="font-size:0.4em">api.github.com/meta</a>
             </section>
 
             <!-- ips -->
             <section class="summary-list" id="ips">
-                <h3>Blocos de IP por serviço</h3>
+                <h3>Blocos de IP</h3>
+                <p style="font-size: 0.5em; opacity: 0.8;">Todos os blocos de IP listados na API</p>
                 <pre id="ip-list" data-prevent-swipe></pre>
                 <a href="https://api.github.com/meta" target="_blank" style="font-size:0.4em">api.github.com/meta</a>
             </section>
@@ -653,16 +655,16 @@ OrgName:        GitHub, Inc.
                 <svg viewBox="0 0 900 540" style="width: 100%; max-height: 560px; font-family: inherit;">
                     <defs>
                         <marker id="seta-dns" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-                            <path d="M0,0 L10,5 L0,10 z" fill="#6b4c9a" />
+                            <path d="M0,0 L10,5 L0,10 z" fill="#666" />
                         </marker>
                         <marker id="seta-tcp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-                            <path d="M0,0 L10,5 L0,10 z" fill="#2e7d32" />
+                            <path d="M0,0 L10,5 L0,10 z" fill="#c182f2" />
                         </marker>
                         <marker id="seta-tls" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-                            <path d="M0,0 L10,5 L0,10 z" fill="#1565c0" />
+                            <path d="M0,0 L10,5 L0,10 z" fill="#5099ed" />
                         </marker>
                         <marker id="seta-dados" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
-                            <path d="M0,0 L10,5 L0,10 z" fill="#e65100" />
+                            <path d="M0,0 L10,5 L0,10 z" fill="#f25c5c" />
                         </marker>
                         <marker id="seta-fin" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
                             <path d="M0,0 L10,5 L0,10 z" fill="#666" />
@@ -683,34 +685,34 @@ OrgName:        GitHub, Inc.
                     <line x1="690" y1="55" x2="690" y2="530" stroke="#999" stroke-dasharray="6 5" />
 
                     <!-- DNS -->
-                    <line class="fragment" data-fragment-index="1" x1="110" y1="100" x2="398" y2="100" stroke="#6b4c9a" stroke-width="2" marker-end="url(#seta-dns)" />
+                    <line class="fragment" data-fragment-index="1" x1="110" y1="100" x2="398" y2="100" stroke="#666" stroke-width="2" marker-end="url(#seta-dns)" />
                     <text class="fragment" data-fragment-index="1" x="255" y="93" text-anchor="middle" font-size="14" fill="#333">github.com</text>
-                    <line class="fragment" data-fragment-index="1" x1="400" y1="140" x2="112" y2="140" stroke="#6b4c9a" stroke-width="2" marker-end="url(#seta-dns)" />
+                    <line class="fragment" data-fragment-index="1" x1="400" y1="140" x2="112" y2="140" stroke="#666" stroke-width="2" marker-end="url(#seta-dns)" />
                     <text class="fragment" data-fragment-index="1" x="255" y="133" text-anchor="middle" font-size="14" fill="#333">4.228.31.150</text>
-                    <text class="fragment" data-fragment-index="1" x="715" y="125" font-size="16" font-weight="bold" fill="#6b4c9a">1. DNS</text>
+                    <text class="fragment" data-fragment-index="1" x="715" y="125" font-size="16" font-weight="bold" fill="#666">1. DNS</text>
 
                     <!-- 3way tcp -->
-                    <line class="fragment" data-fragment-index="2" x1="110" y1="190" x2="688" y2="190" stroke="#2e7d32" stroke-width="2" marker-end="url(#seta-tcp)" />
+                    <line class="fragment" data-fragment-index="2" x1="110" y1="190" x2="688" y2="190" stroke="#c182f2" stroke-width="2" marker-end="url(#seta-tcp)" />
                     <text class="fragment" data-fragment-index="2" x="400" y="183" text-anchor="middle" font-size="14" fill="#333" stroke-width="4" paint-order="stroke">SYN</text>
-                    <line class="fragment" data-fragment-index="2" x1="690" y1="220" x2="112" y2="220" stroke="#2e7d32" stroke-width="2" marker-end="url(#seta-tcp)" />
+                    <line class="fragment" data-fragment-index="2" x1="690" y1="220" x2="112" y2="220" stroke="#c182f2" stroke-width="2" marker-end="url(#seta-tcp)" />
                     <text class="fragment" data-fragment-index="2" x="400" y="213" text-anchor="middle" font-size="14" fill="#333" stroke-width="4" paint-order="stroke">SYN, ACK</text>
-                    <line class="fragment" data-fragment-index="2" x1="110" y1="250" x2="688" y2="250" stroke="#2e7d32" stroke-width="2" marker-end="url(#seta-tcp)" />
+                    <line class="fragment" data-fragment-index="2" x1="110" y1="250" x2="688" y2="250" stroke="#c182f2" stroke-width="2" marker-end="url(#seta-tcp)" />
                     <text class="fragment" data-fragment-index="2" x="400" y="243" text-anchor="middle" font-size="14" fill="#333" stroke-width="4" paint-order="stroke">ACK</text>
-                    <text class="fragment" data-fragment-index="2" x="715" y="215" font-size="16" font-weight="bold" fill="#2e7d32">2. Handshake TCP</text>
+                    <text class="fragment" data-fragment-index="2" x="715" y="215" font-size="16" font-weight="bold" fill="#c182f2">2. Handshake TCP</text>
 
                     <!-- secure -->
-                    <line class="fragment" data-fragment-index="3" x1="110" y1="300" x2="688" y2="300" stroke="#1565c0" stroke-width="2" marker-end="url(#seta-tls)" />
+                    <line class="fragment" data-fragment-index="3" x1="110" y1="300" x2="688" y2="300" stroke="#5099ed" stroke-width="2" marker-end="url(#seta-tls)" />
                     <text class="fragment" data-fragment-index="3" x="400" y="293" text-anchor="middle" font-size="14" fill="#333" stroke-width="4" paint-order="stroke">Client Hello / Key Exchange Init</text>
-                    <line class="fragment" data-fragment-index="3" x1="690" y1="335" x2="112" y2="335" stroke="#1565c0" stroke-width="2" marker-end="url(#seta-tls)" />
+                    <line class="fragment" data-fragment-index="3" x1="690" y1="335" x2="112" y2="335" stroke="#5099ed" stroke-width="2" marker-end="url(#seta-tls)" />
                     <text class="fragment" data-fragment-index="3" x="400" y="328" text-anchor="middle" font-size="14" fill="#333" stroke-width="4" paint-order="stroke">Server Hello / Key Exchange Reply</text>
-                    <text class="fragment" data-fragment-index="3" x="715" y="315" font-size="16" font-weight="bold" fill="#1565c0">3. Autenticação (TLS SSH)</text>
+                    <text class="fragment" data-fragment-index="3" x="715" y="315" font-size="16" font-weight="bold" fill="#5099ed">3. Autenticação (TLS SSH)</text>
 
                     <!-- tranfs -->
-                    <line class="fragment" data-fragment-index="4" x1="110" y1="385" x2="686" y2="385" stroke="#e65100" stroke-width="4" marker-end="url(#seta-dados)" />
+                    <line class="fragment" data-fragment-index="4" x1="110" y1="385" x2="686" y2="385" stroke="#f25c5c" stroke-width="4" marker-end="url(#seta-dados)" />
                     <text class="fragment" data-fragment-index="4" x="400" y="376" text-anchor="middle" font-size="14" fill="#333" stroke-width="4" paint-order="stroke">Dados do git</text>
-                    <line class="fragment" data-fragment-index="4" x1="690" y1="420" x2="114" y2="420" stroke="#e65100" stroke-width="4" marker-end="url(#seta-dados)" />
+                    <line class="fragment" data-fragment-index="4" x1="690" y1="420" x2="114" y2="420" stroke="#f25c5c" stroke-width="4" marker-end="url(#seta-dados)" />
                     <text class="fragment" data-fragment-index="4" x="400" y="411" text-anchor="middle" font-size="14" fill="#333" stroke-width="4" paint-order="stroke">Resposta do servidor</text>
-                    <text class="fragment" data-fragment-index="4" x="715" y="405" font-size="16" font-weight="bold" fill="#e65100">4. Transferência de dados criptiografados</text>
+                    <text class="fragment" data-fragment-index="4" x="715" y="405" font-size="16" font-weight="bold" fill="#f25c5c">4. Transferência de dados criptiografados</text>
 
                     <!-- fin -->
                     <line class="fragment" data-fragment-index="5" x1="110" y1="470" x2="688" y2="470" stroke="#666" stroke-width="2" marker-end="url(#seta-fin)" />
