@@ -293,8 +293,9 @@ Address: <g><strong>4.228.31.150</strong>     -> ip retornado pelo servidor dns<
 
             <!-- comparacao distribuicao -->
             <section>
-                <h3>Arquitetura distribuida</h3>
-                <pre>
+                <h3>Um domínio, varios servidores</h3>
+                <div style="position: absolute; width:100%" class="fragment fade-out" data-fragment-index="1">
+                    <pre>
 ❯ <strong>nslookup</strong> github.com
 Server:		192.168.1.101
 Address:	<y><strong>192.168.1.101#53</strong> -> meu servidor local de dns</y>
@@ -302,8 +303,8 @@ Address:	<y><strong>192.168.1.101#53</strong> -> meu servidor local de dns</y>
 Non-authoritative answer:
 Name:	github.com
 Address: <g><strong>4.228.31.150</strong>     -> ip retornado pelo servidor dns</g>
-                </pre>
-                <pre>
+                    </pre>
+                    <pre>
 ❯ <strong>nslookup</strong> github.com 84.200.69.80
 Server:		84.200.69.80
 Address:	<y><strong>84.200.69.80#53</strong>  -> um servidor alemao de dns</y>
@@ -311,10 +312,39 @@ Address:	<y><strong>84.200.69.80#53</strong>  -> um servidor alemao de dns</y>
 Non-authoritative answer:
 Name:	github.com
 Address: <g><strong>140.82.121.3</strong>      -> ip retornado pelo servidor dns</g>
-                </pre>
+                    </pre>
+                </div>
+
+                <div style="position: absolute; width:100%" class="fragment fade-in" data-fragment-index="1">
+                    <pre style="font-size: 0.45em;">
+❯ <strong>curl</strong> -I https://github.com | <strong>grep</strong> region
+x-github-edge-region: <g><strong>brazilsouth</strong></g>
+                    </pre>
+                    <pre style="font-size: 0.45em;">
+❯ <strong>curl</strong> -I --resolve github.com:443:<g>140.82.121.3</g> https://github.com  | <strong>grep</strong> region
+x-github-edge-region: <g><strong>FRA</strong></g>
+                    </pre>
+
+                    <div class="fragment fade-in" data-fragment-index="2">
+                        <pre style="font-size: 0.45em;">
+❯ <strong>curl</strong> -I --resolve github.com:443:<g>20.87.245.0</g> https://github.com  | <strong>grep</strong> region
+x-github-edge-region: <g><strong>southafricanorth</strong></g>
+                        </pre>
+                        <pre style="font-size: 0.45em;">
+❯ <strong>curl</strong> -I --resolve github.com:443:<g>48.202.248.40</g> https://github.com  | <strong>grep</strong> region
+x-github-edge-region: <g><strong>eastus</strong></g>
+                        </pre>
+                        <pre style="font-size: 0.45em;">
+❯ <strong>curl</strong> -I --resolve github.com:443:<g>20.175.192.147</g> https://github.com  | <strong>grep</strong> region
+x-github-edge-region: <g><strong>canadacentral</strong></g>
+                        </pre>
+                    </div>
+                </div>
+
 
             </section>
 
+            <!--
             <section>
                 <pre>
 ❯ <strong>whois</strong> 4.228.31.150 | <strong>grep</strong> -E "NetRange|CIDR|OrgName"
@@ -329,6 +359,18 @@ NetRange:       140.82.112.0 - 140.82.127.255
 CIDR:           140.82.112.0/20
 OrgName:        GitHub, Inc.
                 </pre>
+            </section>
+            -->
+
+            <!-- CDN no GitHub Pages -->
+            <section>
+                <h3>CDN em Github Pages</h3>
+                <pre style="font-size: 0.45em;">❯ <strong>curl</strong> -I https://leordg.github.io/Github/
+<grey>[...]</grey>
+<strong>x-served-by:</strong> cache-cwb-sbct2070034-CWB     <y>-> nó da CDN em Curitiba</y>
+<strong>x-cache:</strong> MISS                              <y>-> não estava em cache</y>
+<strong>age:</strong> 0                                     <y>-> há quanto tempo está em cache</y>
+<strong>x-fastly-request-id:</strong> 809fd9cd83498a5...</pre>
             </section>
 
             <!-- dominios -->
