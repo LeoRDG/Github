@@ -30,38 +30,38 @@
 
             <!-- Intro 2 -->
             <section>
-            <h3>Mas é muito mais do que isso</h3>
-            <p>O GitHub apoia todo o ciclo de desenvolvimento</p>
-            <ul style="font-size: 0.8em;">
-                <li>Planejamento: Issues e Projects</li>
-                <li>Criação: repositórios e histórico</li>
-                <li>Revisão: pull requests</li>
-                <li>Teste: automação com Actions</li>
-                <li>Deploy: releases, Pages e Packages</li>
-                <li>Operação: dependências e segurança</li>
-            </ul>
+                <h3>Mas é muito mais do que isso</h3>
+                <p>O GitHub apoia todo o ciclo de desenvolvimento</p>
+                <ul style="font-size: 0.8em;">
+                    <li>Planejamento: Issues e Projects</li>
+                    <li>Criação: repositórios e histórico</li>
+                    <li>Revisão: pull requests</li>
+                    <li>Teste: automação com Actions</li>
+                    <li>Deploy: releases, Pages e Packages</li>
+                    <li>Operação: dependências e segurança</li>
+                </ul>
             </section>
 
             <!-- Intro 3 -->
             <section>
-            <h3>Git ≠ GitHub</h3>
-            <div class="two-col" style="display:flex; gap:30px; text-align:left;">
-                <div>
-                <h4>Git</h4>
-                <ul style="font-size:0.7em;">
-                    <li>Sistema de controle de versão</li>
-                    <li>Código aberto</li>
-                    <li>Roda na sua máquina</li>
-                </ul>
+                <h3>Git ≠ GitHub</h3>
+                <div class="two-col" style="display:flex; gap:30px; text-align:left;">
+                    <div>
+                        <h4>Git</h4>
+                        <ul style="font-size:0.7em;">
+                            <li>Sistema de controle de versão</li>
+                            <li>Código aberto</li>
+                            <li>Roda na sua máquina</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>GitHub</h4>
+                        <ul style="font-size:0.7em;">
+                            <li>Plataforma construída sobre o Git</li>
+                            <li>Hospeda repositórios e adiciona colaboração, automação e mais</li>
+                        </ul>
+                    </div>
                 </div>
-                <div>
-                <h4>GitHub</h4>
-                <ul style="font-size:0.7em;">
-                    <li>Plataforma construída sobre o Git</li>
-                    <li>Hospeda repositórios e adiciona colaboração, automação e mais</li>
-                </ul>
-                </div>
-            </div>
             </section>
 
             <!-- Rede Social -->
@@ -71,6 +71,104 @@
                     <p>Onde voce pode compartilhar seu código com estranhos na internet</p>
                     <img src="gitm.jpg" alt="" style="height: 400px; width: 300px;">
                 </div>
+            </section>
+
+            <!-- Protocolos e portas -->
+            <section>
+                <h3>Protocolos e portas</h3>
+                <table style="font-size: 0.6em;">
+                    <tr>
+                        <th>Protocolo</th>
+                        <th>Porta</th>
+                        <th>Transporte</th>
+                        <th>Uso no GitHub</th>
+                    </tr>
+                    <tr>
+                        <td><strong>HTTPS</strong></td>
+                        <td>
+                            <g><strong>443</strong></g>
+                        </td>
+                        <td>TCP</td>
+                        <td>Site, API e git</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SSH</strong></td>
+                        <td>
+                            <g><strong>22</strong></g>
+                        </td>
+                        <td>TCP</td>
+                        <td>git</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DNS</strong></td>
+                        <td>53</td>
+                        <td>UDP</td>
+                        <td>github.com → 4.228.31.150</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TLS 1.3</strong></td>
+                        <td>-</td>
+                        <td>TCP</td>
+                        <td>Criptografa o HTTPS</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HTTP</strong></td>
+                        <td>80</td>
+                        <td>TCP</td>
+                        <td>Só redireciona para HTTPS</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Git</strong></td>
+                        <td>9418</td>
+                        <td>TCP</td>
+                        <td>Protocolo nativo do git, desativado no GitHub</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- OSI TCP/IP -->
+            <section>
+                <h3>OSI - TCP/IP</h3>
+                <table style="font-size: 0.55em;">
+                    <tr>
+                        <th>TCP/IP</th>
+                        <th>OSI</th>
+                        <th>No GitHub</th>
+                    </tr>
+                    <tr class="handshake">
+                        <td rowspan="3" style="vertical-align: middle;"><strong>Aplicação</strong></td>
+                        <td>Aplicação</td>
+                        <td>HTTP/2, SSH, DNS, Git</td>
+                    </tr>
+                    <tr class="handshake">
+                        <td>Apresentação</td>
+                        <td>TLS 1.3 (criptografia)</td>
+                    </tr>
+                    <tr class="handshake">
+                        <td>Sessão</td>
+                        <td>Sessão TLS / sessão SSH</td>
+                    </tr>
+                    <tr class="chello">
+                        <td><strong>Transporte</strong></td>
+                        <td>Transporte</td>
+                        <td>TCP (443, 22) e UDP (53)</td>
+                    </tr>
+                    <tr class="shello">
+                        <td><strong>Internet</strong></td>
+                        <td>Rede</td>
+                        <td>IP: 192.168.1.13 -> 4.228.31.150
+                        </td>
+                    </tr>
+                    <tr class="fin">
+                        <td rowspan="2" style="vertical-align: middle;"><strong>Acesso à rede</strong></td>
+                        <td>Enlace</td>
+                        <td>Ethernet / Wi-Fi</td>
+                    </tr>
+                    <tr class="fin">
+                        <td>Física</td>
+                        <td>Cabos, ondas de rádio</td>
+                    </tr>
+                </table>
             </section>
 
             <!-- dns -->
@@ -152,7 +250,7 @@ OrgName:        GitHub, Inc.
                 <pre id="dominios-list" data-prevent-swipe></pre>
                 <a href="https://api.github.com/meta" target="_blank" style="font-size:0.4em">api.github.com/meta</a>
             </section>
-            
+
             <!-- ips -->
             <section class="summary-list" id="ips">
                 <h3>Blocos de IP por serviço</h3>
@@ -480,9 +578,9 @@ OrgName:        GitHub, Inc.
         }
 
         const r = fetch('https://api.github.com/meta').then(resp => resp.json());
-        r.then(data => criar_dominios(data));        
-        r.then(data => criar_ips(data));        
-        
+        r.then(data => criar_dominios(data));
+        r.then(data => criar_ips(data));
+
     </script>
     <script>
         Reveal.initialize({ hash: true });

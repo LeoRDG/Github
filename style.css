@@ -65,3 +65,7 @@ summary {
 summary:hover {
     color: rgb(129, 189, 242);
 }
+
+td {
+    padding: .2em .85em .2em .85em!important;
+}
